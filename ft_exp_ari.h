@@ -3,13 +3,21 @@
 
 # include "libft.h"
 
-typedef struct		s_ari
+/*typedef struct		s_ari
 {
-	struct s_ari	left;
-	struct s_ari	right;
+	struct s_ari	*left;
+	struct s_ari	*right;
 	char			*str;
 	char			*op;
 	int				ret;
-}					t_ari;
+}					t_ari;*/
+
+//ft_erase_space.c
+
+char            	*ft_erase_space(char *str);
+
+//ft_logic_op.c
+
+void				ft_logic_op(char *str, int size);
 
 #endif
