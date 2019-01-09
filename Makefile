@@ -13,7 +13,8 @@
 NAME = expari
 
 SRC =	main.c \
-		ft_erase_space.c
+		ft_erase_space.c \
+		ft_true_op.c
 
 TMP = $(SRC:.c=.o)
 

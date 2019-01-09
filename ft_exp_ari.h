@@ -16,8 +16,8 @@
 
 char            	*ft_erase_space(char *str);
 
-//ft_logic_op.c
+//ft_true_op.c
 
-void				ft_logic_op(char *str, int size);
+void				ft_true_op(char *str, int size);
 
 #endif

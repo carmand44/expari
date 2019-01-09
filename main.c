@@ -9,8 +9,9 @@ static void 	ft_putstrnbendl(char *str, int size)
 static void		ft_resolve(char *str, int size)
 {
 	ft_putstrnbendl(str, size);
-	ft_logic_op(str, size);
-	
+	ft_true_op(str, size);
+	/*ft_logic_op
+	ft_math_op*/	
 }
 
 static char		*ft_exp_ari(char *str, int size)
