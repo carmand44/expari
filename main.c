@@ -6,7 +6,7 @@
 /*   By: achavy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 00:18:14 by achavy            #+#    #+#             */
-/*   Updated: 2019/01/21 04:08:42 by achavy           ###   ########.fr       */
+/*   Updated: 2019/01/21 04:51:11 by achavy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static void		ft_resolve(char *str, int size)
 	tmp = NULL;
 	if (!(tmp = ft_strndup(str, size)))
 		return ; // malloc error
-	//ft_true_op(str, size);
-	//ft_logic_op(str, size);
 	if (!(tmp = ft_math_op(tmp, size)))
 		return ; // malloc error
 	ft_itoa_exp_ari(str, ft_atoi(tmp), size);

@@ -6,7 +6,7 @@
 /*   By: achavy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/16 17:13:55 by achavy            #+#    #+#             */
-/*   Updated: 2019/01/21 04:02:27 by achavy           ###   ########.fr       */
+/*   Updated: 2019/01/21 04:51:13 by achavy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		ft_replace(char *str, int i, int j, int n)
 		ft_itoa_exp_ari(&str[j], ft_atoi(&str[j]) + ft_atoi(&str[i + 1]), i - j + n);
 }
 
-static int		ft_count_next_num(char *str)
+int		ft_count_next_num(char *str)
 {
 	int i;
 
@@ -38,7 +38,7 @@ static int		ft_count_next_num(char *str)
 	return (i);
 }
 
-static int		ft_count_prev_num(char *str, int m)
+int		ft_count_prev_num(char *str, int m)
 {
 	int i;
 
@@ -69,6 +69,7 @@ static char		*ft_calc_less_prio(char *str, int n)
 		}
 		i++;
 	}
+	ft_true_op(str, n);
 	return (str);
 }
 
