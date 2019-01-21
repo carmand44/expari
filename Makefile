@@ -6,7 +6,7 @@
 #    By: carmand <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 21:43:02 by carmand           #+#    #+#              #
-#    Updated: 2017/10/24 03:21:18 by carmand          ###   ########.fr        #
+#    Updated: 2019/01/21 03:42:39 by achavy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = expari
 
 SRC =	main.c \
 		ft_erase_space.c \
-		ft_true_op.c
+		ft_math_op.c \
+		ft_itoa_exp_ari.c
 
 TMP = $(SRC:.c=.o)
 

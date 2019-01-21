@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achavy <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/21 00:18:14 by achavy            #+#    #+#             */
+/*   Updated: 2019/01/21 04:08:42 by achavy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_exp_ari.h"
 
 static void 	ft_putstrnbendl(char *str, int size)
@@ -9,9 +21,18 @@ static void 	ft_putstrnbendl(char *str, int size)
 static void		ft_resolve(char *str, int size)
 {
 	ft_putstrnbendl(str, size);
-	ft_true_op(str, size);
-	/*ft_logic_op
-	ft_math_op*/	
+	char *tmp;
+
+	tmp = NULL;
+	if (!(tmp = ft_strndup(str, size)))
+		return ; // malloc error
+	//ft_true_op(str, size);
+	//ft_logic_op(str, size);
+	if (!(tmp = ft_math_op(tmp, size)))
+		return ; // malloc error
+	ft_itoa_exp_ari(str, ft_atoi(tmp), size);
+	ft_strdel(&tmp);
+	ft_putendl("out");
 }
 
 static char		*ft_exp_ari(char *str, int size)

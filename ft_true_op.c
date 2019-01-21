@@ -1,15 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_true_op.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achavy <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/21 00:20:31 by achavy            #+#    #+#             */
+/*   Updated: 2019/01/21 00:38:27 by achavy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_exp_ari.h"
 
-//1='<' 2='>' 3='<=' 4='>=' 5='==' 6='!='
+/*
+** 1='<' 2='>' 3='<=' 4='>=' 5='==' 6='!='
+*/
 
 static int	ft_check_op(char *str)
 {
 	if (str[1] == '\0')
 		return (0);
-	/*if (str[0] == '&' && str[1] == '&')
-		return (1);
-	if (str[0] == '|' && str[1] == '|')
-		return (2);*/
 	if (str[0] == '<' && str[1] != '=')
 		return (1);
 	if (str[0] == '>' && str[1] != '=')
@@ -24,9 +34,11 @@ static int	ft_check_op(char *str)
 		return (6);
 	return (0);
 }
+
 static int	ft_lower_op(char c)
 {
-	if ( c == '*' || c == '/' || c == '%' || c == '+' || c == '-' || c =='|' || c == '&')
+	if ((c == '*') || (c == '/') || (c == '%') || (c == '+')
+	|| (c == '-') || (c =='|') || (c == '&'))
 		return (1)
 	return (0);
 }
@@ -38,7 +50,7 @@ void		ft_true_op(char *str, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (ft_lower_op(str[i]) == 0 && (str[i] < '0' || str[i] > '9'))
+		if (ft_lower_op(str[i]) && (str[i] < '0' || str[i] > '9'))
 		{
 			ft_check_op(&str[i]);
 		}

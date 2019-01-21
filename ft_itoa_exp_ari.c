@@ -1,58 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_erase_space.c                                   :+:      :+:    :+:   */
+/*   ft_itoa_exp_ari.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achavy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/21 00:18:30 by achavy            #+#    #+#             */
-/*   Updated: 2019/01/21 00:18:32 by achavy           ###   ########.fr       */
+/*   Created: 2018/09/16 17:29:24 by achavy            #+#    #+#             */
+/*   Updated: 2019/01/21 03:28:11 by achavy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_exp_ari.h"
 
-static int		ft_nb_space(char *str)
+void	ft_put_spaces(char *str, int i, int n)
 {
-	int		nb;
-	int		i;
-
-	i = 0;
-	nb = 0;
-	while (str[i])
+	i++;
+	while (i < n)
 	{
-		if (str[i] == ' ')
-			nb++;
+		str[i] = ' ';
 		i++;
 	}
-	return (nb);
 }
 
-char			*ft_erase_space(char *str)
+void	ft_itoa_exp_ari(char *str, int nbr, int n)
 {
-	int		j;
-	int		i;
-	int		nb;
-	char	*new;
+	unsigned int	nb;
+	int				i;
+	int				div;
 
-	new = NULL;
-	nb = 0;
 	i = 0;
-	j = 0;
-	if ((nb = ft_nb_space(str)) == 0)
-		return (str);
-	if (!(new = ft_strnew(ft_strlen(str) - nb)))
-		return (NULL);
-	while (str[i])
+	div = 1000000000;
+	if (nbr < 0)
 	{
-		if (str[i] != ' ')
-		{
-			new[j] = str[i];
-			j++;
-		}
+		str[i] = '-';
 		i++;
+		nb = -nbr;
 	}
-	new[j] = '\0';
-	free(str);
-	return (new); 
+	else
+		nb = nbr;
+	while (div != 1 && nb / div == 0)
+		div = div / 10;
+	while (div != 1)
+	{
+		str[i] = nb / div + 48;
+		i++;
+		nb = nb % div;
+		div = div / 10;
+	}
+	str[i] = nb + 48;
+	ft_put_spaces(str, i, n);
 }
