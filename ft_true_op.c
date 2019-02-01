@@ -35,10 +35,50 @@ static int	ft_check_op(char *str)
 	return (0); //error op
 }
 
-static void ft_check_true(char *str, int p, int nb, int n)
+static void ft_check_true(char *str, int p, int nb, int n, int i)
 {
-	if (nb == 1 && ft_atoi()) // voir si besoin du i de ture op
-		ft_itoa_exp_ari(str[p], 1, n)
+	if (nb == 1)
+	{
+ 		if (ft_atoi(&str[p]) < ft_atoi(&str[i + 1]))
+			ft_itoa_exp_ari(&str[p], 1, n);
+		else
+			ft_itoa_exp_ari(&str[p], 0, n);
+	}
+	if (nb == 2)
+	{
+ 		if (ft_atoi(&str[p]) > ft_atoi(&str[i + 1]))
+			ft_itoa_exp_ari(&str[p], 1, n);
+		else
+			ft_itoa_exp_ari(&str[p], 0, n);
+	}
+	if (nb == 3)
+	{
+ 		if (ft_atoi(&str[p]) <= ft_atoi(&str[i + 2]))
+			ft_itoa_exp_ari(&str[p], 1, n + 1);
+		else
+			ft_itoa_exp_ari(&str[p], 0, n + 1);
+	}
+	if (nb == 4)
+	{
+ 		if (ft_atoi(&str[p]) >= ft_atoi(&str[i + 2]))
+			ft_itoa_exp_ari(&str[p], 1, n + 1);
+		else
+			ft_itoa_exp_ari(&str[p], 0, n + 1);
+	}
+	if (nb == 5)
+	{
+ 		if (ft_atoi(&str[p]) == ft_atoi(&str[i + 2]))
+			ft_itoa_exp_ari(&str[p], 1, n + 1);
+		else
+			ft_itoa_exp_ari(&str[p], 0, n + 1);
+	}
+	if (nb == 6)
+	{
+ 		if (ft_atoi(&str[p]) != ft_atoi(&str[i + 2]))
+			ft_itoa_exp_ari(&str[p], 1, n + 1);
+		else
+			ft_itoa_exp_ari(&str[p], 0, n + 1);
+	}
 }
 
 char	*ft_true_op(char *str, int size)
@@ -57,12 +97,13 @@ char	*ft_true_op(char *str, int size)
 		if (0 != (nb = ft_check_op(&str[i])))
 		{
 			if (nb < 3)
-				n = i + ft_count_next_num(&str[i + 1]);
+				n = i + ft_count_next_num(&str[i + 1]) + 1;
 			else
-				n = i + ft_count_next_num(&str[i + 2]);
-			p = ft_count_prev_num(str, i);
-			ft_check_true(str, p, nb, n);
+				n = i + ft_count_next_num(&str[i + 2]) + 1;
+			p = ft_count_prev_num(str, i) - 2;
+			ft_check_true(str, p, nb, n, i);
 			i = -1;
+ft_putendl(str);
 			if (!(str = ft_erase_space(str)))
 				return (NULL); // malloc error
 			size = ft_strlen(str);
@@ -70,6 +111,5 @@ char	*ft_true_op(char *str, int size)
 		}
 		i++;
 	}
-	//ft_logic_op
-	return (str);
+	return (ft_logic_op(str, size));
 }

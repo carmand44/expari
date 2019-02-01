@@ -12,15 +12,8 @@
 
 #include "ft_exp_ari.h"
 
-static void 	ft_putstrnbendl(char *str, int size)
-{
-	write(1, str, size);
-	ft_putchar('\n');
-}
-
 static void		ft_resolve(char *str, int size)
 {
-	ft_putstrnbendl(str, size);
 	char *tmp;
 
 	tmp = NULL;
@@ -30,7 +23,6 @@ static void		ft_resolve(char *str, int size)
 		return ; // malloc error
 	ft_itoa_exp_ari(str, ft_atoi(tmp), size);
 	ft_strdel(&tmp);
-	ft_putendl("out");
 }
 
 static char		*ft_exp_ari(char *str, int size)
@@ -40,7 +32,6 @@ static char		*ft_exp_ari(char *str, int size)
 
 	i = 0;
 	p = -1;
-	ft_putstrnbendl(str, size);
 	while (i < size)
 	{
 		if (str[i] == ')' && p == -1)
@@ -75,10 +66,8 @@ int				main(int c, char **v)
 	{
 		if (!(str = ft_strdup(v[1])))
 			return (0);
-		ft_putendl(str);
 		if (!(str = ft_erase_space(str)))
 			return (0);
-		ft_putendl(str);
 		if (!(str = ft_exp_ari(str, ft_strlen(str))))
 			return (0);
 		ft_putendl(str);

@@ -31,7 +31,7 @@ char	*ft_true_op(char *str, int size);
 ** ft_logic_op.c
 */
 
-void	ft_logic_op(char *str, int size);
+char	*ft_logic_op(char *str, int size);
 
 /*
 ** ft_math_op.c

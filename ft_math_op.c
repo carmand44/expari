@@ -12,7 +12,7 @@
 
 #include "ft_exp_ari.h"
 
-static void		ft_replace(char *str, int i, int j, int n)
+static void		ft_calc(char *str, int i, int j, int n)
 {
 	if (str[i] == '*')
 		ft_itoa_exp_ari(&str[j], ft_atoi(&str[j]) * ft_atoi(&str[i + 1]), i - j + n);
@@ -57,10 +57,9 @@ static char		*ft_calc_less_prio(char *str, int n)
 	i = 0;
 	while (str[i] && i < n)
 	{
-		ft_putendl(str);
 		if ((i != 0) && (str[i] == '+' || str[i] == '-'))
 		{
-			ft_replace(str, i, i - ft_count_prev_num(str, i),
+			ft_calc(str, i, i - ft_count_prev_num(str, i),
 			ft_count_next_num(&str[i]));
 			i = -1;
 			if (!(str = ft_erase_space(str)))
@@ -69,8 +68,8 @@ static char		*ft_calc_less_prio(char *str, int n)
 		}
 		i++;
 	}
-	ft_true_op(str, n);
-	return (str);
+	ft_putendl(str);
+	return (ft_true_op(str, n));
 }
 
 char		*ft_math_op(char *str, int n)
@@ -78,12 +77,12 @@ char		*ft_math_op(char *str, int n)
 	int i;
 
 	i = 0;
+	ft_putendl(str);
 	while (str[i] && i < n)
 	{
-		ft_putendl(str);
 		if (str[i] == '*' || str[i] == '/' || str[i] == '%')
 		{
-			ft_replace(str, i, i - ft_count_prev_num(str, i),
+			ft_calc(str, i, i - ft_count_prev_num(str, i),
 			ft_count_next_num(&str[i]));
 			i = -1;
 			if (!(str = ft_erase_space(str)))
@@ -94,6 +93,5 @@ char		*ft_math_op(char *str, int n)
 	}
 	if (!(str = ft_calc_less_prio(str, n)))
 		return (NULL);
-	ft_putendl("out");
 	return (str);
 }

@@ -15,6 +15,8 @@ NAME = expari
 SRC =	main.c \
 		ft_erase_space.c \
 		ft_math_op.c \
+		ft_true_op.c \
+		ft_logic_op.c \
 		ft_itoa_exp_ari.c
 
 TMP = $(SRC:.c=.o)
