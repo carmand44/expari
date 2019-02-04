@@ -68,7 +68,6 @@ static char		*ft_calc_less_prio(char *str, int n)
 		}
 		i++;
 	}
-	ft_putendl(str);
 	return (ft_true_op(str, n));
 }
 

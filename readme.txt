@@ -1,1 +1,1 @@
-true op pb pour les calc true voir fichier
+on est bon sur +-*/% &|=!>< manque -- ++avec les variable et erreur

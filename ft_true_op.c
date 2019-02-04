@@ -100,10 +100,9 @@ char	*ft_true_op(char *str, int size)
 				n = i + ft_count_next_num(&str[i + 1]) + 1;
 			else
 				n = i + ft_count_next_num(&str[i + 2]) + 1;
-			p = ft_count_prev_num(str, i) - 2;
+			p = ft_count_prev_num(str, i) - i ;
 			ft_check_true(str, p, nb, n, i);
 			i = -1;
-ft_putendl(str);
 			if (!(str = ft_erase_space(str)))
 				return (NULL); // malloc error
 			size = ft_strlen(str);
