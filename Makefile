@@ -6,7 +6,7 @@
 #    By: carmand <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 21:43:02 by carmand           #+#    #+#              #
-#    Updated: 2019/01/21 03:42:39 by achavy           ###   ########.fr        #
+#    Updated: 2019/02/18 23:22:24 by achavy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRC =	main.c \
 		ft_math_op.c \
 		ft_true_op.c \
 		ft_logic_op.c \
-		ft_itoa_exp_ari.c
+		ft_itoa_exp_ari.c \
+		ft_exp_ari_error.c
 
 TMP = $(SRC:.c=.o)
 

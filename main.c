@@ -6,7 +6,7 @@
 /*   By: achavy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 00:18:14 by achavy            #+#    #+#             */
-/*   Updated: 2019/01/21 04:51:11 by achavy           ###   ########.fr       */
+/*   Updated: 2019/02/18 23:41:08 by achavy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char		*ft_exp_ari(char *str, int size)
 	while (i < size)
 	{
 		if (str[i] == ')' && p == -1)
-			return (NULL); //parenthese error
+			ft_exp_ari_error("parenthese error");
 		if (str[i] == '(')
 			p = i;
 		if (p != -1 && str[i] == ')')
@@ -52,14 +52,14 @@ static char		*ft_exp_ari(char *str, int size)
 		i++;
 	}
 	if (p != -1)
-		return (NULL); //parenthese error
+		ft_exp_ari_error("parenthese error");
 	ft_resolve(str, size);
 	return (str);
 }
 
 int				main(int c, char **v)
 {
-	char	*str;
+	char		*str;
 
 	str = NULL;
 	if (c == 2)

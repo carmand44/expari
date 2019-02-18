@@ -6,7 +6,7 @@
 /*   By: achavy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/16 17:13:55 by achavy            #+#    #+#             */
-/*   Updated: 2019/01/21 04:51:13 by achavy           ###   ########.fr       */
+/*   Updated: 2019/02/19 00:31:56 by achavy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ static void		ft_calc(char *str, int i, int j, int n)
 	if (str[i] == '*')
 		ft_itoa_exp_ari(&str[j], ft_atoi(&str[j]) * ft_atoi(&str[i + 1]), i - j + n);
 	if (str[i] == '/')
+	{
+		if (ft_atoi(&str[i + 1]) == 0)
+			ft_exp_ari_error("division by zero");
 		ft_itoa_exp_ari(&str[j], ft_atoi(&str[j]) / ft_atoi(&str[i + 1]), i - j + n);
+	}
 	if (str[i] == '%')
 		ft_itoa_exp_ari(&str[j], ft_atoi(&str[j]) % ft_atoi(&str[i + 1]), i - j + n);
 	if (str[i] == '-')
@@ -26,7 +30,7 @@ static void		ft_calc(char *str, int i, int j, int n)
 		ft_itoa_exp_ari(&str[j], ft_atoi(&str[j]) + ft_atoi(&str[i + 1]), i - j + n);
 }
 
-int		ft_count_next_num(char *str)
+int				ft_count_next_num(char *str)
 {
 	int i;
 
@@ -38,7 +42,7 @@ int		ft_count_next_num(char *str)
 	return (i);
 }
 
-int		ft_count_prev_num(char *str, int m)
+int				ft_count_prev_num(char *str, int m)
 {
 	int i;
 
@@ -76,7 +80,6 @@ char		*ft_math_op(char *str, int n)
 	int i;
 
 	i = 0;
-	ft_putendl(str);
 	while (str[i] && i < n)
 	{
 		if (str[i] == '*' || str[i] == '/' || str[i] == '%')
