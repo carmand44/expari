@@ -63,7 +63,7 @@ char		*ft_logic_op(char *str, int size)
 			ft_check_logic(str, p, nb, n , i);
 			i = -1;
 			if (!(str = ft_erase_space(str)))
-				return (NULL); // malloc error
+				ft_exp_ari_error("malloc error");
 			size = ft_strlen(str);
 			nb = 0;
 		}

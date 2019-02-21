@@ -32,7 +32,7 @@ static int	ft_check_op(char *str)
 		return (5);
 	if (str[0] == '!' && str[1] == '=')
 		return (6);
-	return (0); //error op
+	return (0);
 }
 
 static void ft_check_true(char *str, int p, int nb, int n, int i)
@@ -104,7 +104,7 @@ char	*ft_true_op(char *str, int size)
 			ft_check_true(str, p, nb, n, i);
 			i = -1;
 			if (!(str = ft_erase_space(str)))
-				return (NULL); // malloc error
+				ft_exp_ari_error("malloc error");
 			size = ft_strlen(str);
 			nb = 0;
 		}

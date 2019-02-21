@@ -53,4 +53,10 @@ void			ft_itoa_exp_ari(char *str, int nbr, int n);
 
 void			ft_exp_ari_error(char *str);
 
+/*
+** ft_check_exp_ari.c
+*/
+
+char			*ft_check_exp_ari(char *str);
+
 #endif

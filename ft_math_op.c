@@ -67,7 +67,7 @@ static char		*ft_calc_less_prio(char *str, int n)
 			ft_count_next_num(&str[i]));
 			i = -1;
 			if (!(str = ft_erase_space(str)))
-				return (NULL); // malloc error
+				ft_exp_ari_error("malloc error");
 			n = ft_strlen(str);
 		}
 		i++;
@@ -88,7 +88,7 @@ char		*ft_math_op(char *str, int n)
 			ft_count_next_num(&str[i]));
 			i = -1;
 			if (!(str = ft_erase_space(str)))
-				return (NULL); // malloc error
+				ft_exp_ari_error("malloc error");
 			n = ft_strlen(str);
 		}
 		i++;
