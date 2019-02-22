@@ -67,6 +67,8 @@ static void		ft_check_syntax(char *str)
 	{
 		while (str[i] == ' ')
 			i++;
+		if (!str[i])
+			return ;
 		i = ft_check_op(str, i);
 		while (str[i] == ' ')
 			i++;
