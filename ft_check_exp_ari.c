@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_exp_ari.h"
-#include <stdio.h>
 
 static int		ft_check_digit(char *str, int i)
 {
@@ -55,7 +54,7 @@ static int		ft_check_num(char *str, int i)
 	return (i);
 }
 
-static void		ft_check_syntax(char *str)
+void			ft_check_exp_ari(char *str)
 {
 	int i;
 	
@@ -74,10 +73,4 @@ static void		ft_check_syntax(char *str)
 			i++;
 		i = ft_check_num(str, i);
 	}
-}
-
-char			*ft_check_exp_ari(char *str)
-{
-	ft_check_syntax(str);
-	return (str);
 }

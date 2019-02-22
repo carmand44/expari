@@ -59,15 +59,18 @@ static char		*ft_exp_ari(char *str, int size)
 
 int				main(int c, char **v)
 {
+	t_list_ari	*list_var;
 	char		*str;
 
 	str = NULL;
+	list_var = NULL;
 	if (c == 2)
 	{
 		if (!(str = ft_strdup(v[1])))
 			return (0);
-		if (!(str = ft_check_exp_ari(str)))
+		if (!(str = ft_check_var(str, list_var)))
 			return (0);
+		ft_check_exp_ari(str);
 		if (!(str = ft_erase_space(str)))
 			ft_exp_ari_error("malloc error");
 		str = ft_exp_ari(str, ft_strlen(str));

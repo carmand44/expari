@@ -19,7 +19,8 @@ SRC =	main.c \
 		ft_logic_op.c \
 		ft_itoa_exp_ari.c \
 		ft_exp_ari_error.c \
-		ft_check_exp_ari.c
+		ft_check_exp_ari.c \
+		ft_check_var.c
 
 TMP = $(SRC:.c=.o)
 
