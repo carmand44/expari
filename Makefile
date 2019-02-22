@@ -27,7 +27,7 @@ LIB = libft/libft.a
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 .PHONY : all clean fclean re
 

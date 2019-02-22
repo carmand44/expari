@@ -20,22 +20,25 @@ static int		ft_check_digit(char *str, int i)
 	return (i);
 }
 
-static int		ft_check_var(char *str, int i)
+static int		ft_check_op(char *str, int i)
 {
-	int nb;
-	int	j;
-
-	j = 0;
-	nb = 0;
-	ft_putendl("on passe la");
-	while (ft_isalpha(str[i + j]))
-		j++;
-	ft_putstr("give me : ");
-	write(1, &str[i], j);
-	ft_putchar(':');
-	scanf("%d", &nb);
-	ft_itoa_exp_ari(&str[i], nb, j);
-	return (i + j);
+	if (str[i])
+	{
+		if ((str[i] == '+') || (str[i] == '-') || (str[i] == '*')
+		|| (str[i] == '/') || (str[i] == '%')
+		|| (str[i] == '<' && str[i + 1] != '=')
+		|| (str[i] == '>' && str[i + 1] != '='))
+			return (i + 1);
+		if ((str[i] == '&' && str[i + 1] == '&')
+		|| (str[i] == '|' && str[i + 1] == '|')
+		|| (str[i] == '<' && str[i + 1] == '=')
+		|| (str[i] == '>' && str[i + 1] == '=')
+		|| (str[i] == '=' && str[i + 1] == '=') 
+		|| (str[i] == '!' && str[i + 1] == '='))
+			return (i + 2);
+	}
+	ft_exp_ari_error(ft_strjoin("operator error or missing : ", str));
+	return (i);
 }
 
 static int		ft_check_num(char *str, int i)
@@ -45,15 +48,10 @@ static int		ft_check_num(char *str, int i)
 	if ((str[i] == '-') || (str[i] == '+'))
 	{
 		i++;
-		ft_putendl("on passe la");
 		if (ft_isdigit(str[i]))
 			return (ft_check_digit(str, i + 1));
-		ft_putendl("on passe la");
-		ft_putnbr(str[i]);
-		if (str[i] == '$')
-			return (ft_check_var(str, i + 1));
-
 	}
+	ft_exp_ari_error(ft_strjoin("operande error or missing : ", str));
 	return (i);
 }
 
@@ -64,13 +62,16 @@ static void		ft_check_syntax(char *str)
 	i = 0;
 	while (str[i] == ' ')
 		i++;
-	ft_putendl("on passe la");
 	i = ft_check_num(str, i);
-	/*if (((str[i] > '9') || (str[i] < '0')) && str[i] != '$' && str[i] != '-'
-	&& str[i] != '+')
-		 ft_exp_ari_error(ft_strjoin("operande error or missing : ",&str[i]));
-	ft_putendl("ok1");*/
-	
+	while (str[i])
+	{
+		while (str[i] == ' ')
+			i++;
+		i = ft_check_op(str, i);
+		while (str[i] == ' ')
+			i++;
+		i = ft_check_num(str, i);
+	}
 }
 
 char			*ft_check_exp_ari(char *str)

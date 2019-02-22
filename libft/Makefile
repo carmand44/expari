@@ -36,7 +36,7 @@ OBJ = $(SRC:.c=.o)
 
 LIB = libft.h
 
-CC = gcc -Wall -Werror -Wextra
+CC = gcc -Wall -Werror -Wextra -g
 
 .PHONY : all clean fclean re
 

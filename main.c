@@ -57,14 +57,14 @@ static char		*ft_exp_ari(char *str, int size)
 	return (str);
 }
 
-int				main()//int c, char **v)
+int				main(int c, char **v)
 {
 	char		*str;
 
 	str = NULL;
-//	if (c == 2)
-//	{
-		if (!(str = ft_strdup("+$azerty")))
+	if (c == 2)
+	{
+		if (!(str = ft_strdup(v[1])))
 			return (0);
 		if (!(str = ft_check_exp_ari(str)))
 			return (0);
@@ -72,6 +72,6 @@ int				main()//int c, char **v)
 			ft_exp_ari_error("malloc error");
 		str = ft_exp_ari(str, ft_strlen(str));
 		ft_putendl(str);
-//	}
+	}
 	exit(0);
 }
