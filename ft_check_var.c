@@ -12,39 +12,69 @@
 
 #include "ft_exp_ari.h"
 
-static int		ft_replace_var(char *str, t_list_ari *list_var, int i)
-{	
-	char	*tmp;
-	char 	*new;
-	char	*nb;
-	int		j;
+static char		*ft_replace_var(char *str, t_list_ari *list_var, int *i)
+{
+	t_list_ari	*l_tmp;	
+	char		*tmp;
+	char 		*new;
+	char		*nb;
+	int			j;
 
 	j = 0;
 	nb = NULL;
 	new = NULL;
 	tmp = NULL;
-
-	while (ft_isalpha(str[j + i]))	
+	l_tmp = NULL;
+	while (ft_isalpha(str[j + *i]))	
 		j++;
-	ft_putstr("give me :");
-	write(1, &str[i], j);
-	ft_putstr(" :");
+	ft_putstr("give me : ");
+	write(1, &str[*i], j);
+	ft_putstr(" : ");
 	get_next_line(0, &nb);
 	if (!nb)
 		return (0);
-	if (!(tmp = ft_strjoin(nb, &str[j + i + 1])))
+ft_putendl(nb);
+	l_tmp = list_var;
+	if (list_var)
+	{
+		while (l_tmp->next)
+			l_tmp = l_tmp->next;
+		if ((!(l_tmp->next = (t_list_ari*)malloc(sizeof(t_list_ari))))
+		|| (!(l_tmp->next->var = ft_strdup(nb))))
+			return (0);
+		l_tmp->next->next = NULL;
+	}
+	else
+	{
+		if ((!(list_var = (t_list_ari*)malloc(sizeof(t_list_ari))))
+		|| (!(list_var->var = ft_strdup(nb))))
+			return (0);
+		list_var->next = NULL;
+	}
+	if (!(tmp = ft_strjoin(nb, &str[j + *i])))
 		return (0);
+ft_putendl(tmp);
 	free(nb);
 	nb = NULL;
-	
-	get_next_line(-2);	
-	return (i);
+	if ((!(nb = ft_strndup(str, *i)))
+	|| (!(new = ft_strjoin(nb,tmp))))
+		return (0);
+ft_putendl(nb);
+ft_putendl(new);
+	free(tmp);
+	tmp = NULL;
+	free(nb);
+	nb = NULL;
+	free(str);
+	str = NULL;
+	get_next_line(-2, NULL);	
+	*i = *i + j;
+	return (new);
 }
 
 char 			*ft_check_var(char *str, t_list_ari *list_var)
 {
 	int i;
-
 
 	i = 0;
 	while (str[i])
@@ -52,9 +82,20 @@ char 			*ft_check_var(char *str, t_list_ari *list_var)
 		if (str[i] == '$' && ft_isalpha(str[i + 1]))
 		{
 			str[i] = ' ';
-			i = ft_replace_var(str, list_var, i + 1);
+			i++;
+			str = ft_replace_var(str, list_var, &i);
+			if (!str)
+				return (NULL);
 		}
 		if (ft_isalpha(str[i]))
+		{
+			str = ft_replace_var(str, list_var, &i);
+			if (!str)
+				return (NULL);
+		}
 		i++;
 	}
+	ft_putchar('C');
+	ft_putendl(str);
+	return (str);
 }

@@ -59,17 +59,17 @@ void			ft_check_exp_ari(char *str)
 	int i;
 	
 	i = 0;
-	while (str[i] == ' ')
+	while (str[i] == ' ' || str[i] == '(' || str[i] == ')')
 		i++;
 	i = ft_check_num(str, i);
 	while (str[i])
 	{
-		while (str[i] == ' ')
+		while (str[i] == ' ' || str[i] == '(' || str[i] == ')')
 			i++;
 		if (!str[i])
 			return ;
 		i = ft_check_op(str, i);
-		while (str[i] == ' ')
+		while (str[i] == ' ' || str[i] == '(' || str[i] == ')')
 			i++;
 		i = ft_check_num(str, i);
 	}
