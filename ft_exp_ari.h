@@ -21,6 +21,7 @@ typedef struct			s_list_ari
 	int					nbr;
 	int					opt;
 	char				*var;
+	char				*name;
 }						t_list_ari;
 
 /*

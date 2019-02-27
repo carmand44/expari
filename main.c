@@ -57,6 +57,40 @@ static char		*ft_exp_ari(char *str, int size)
 	return (str);
 }
 
+static void		ft_modif_var(t_list_ari *list_var)
+{
+	t_list_ari *tmp;
+	
+	tmp = list_var;
+	/*if (tmp)
+	{
+		ft_putendl(tmp->name);
+		if (tmp->opt == 3)
+			ft_putnbr(nbr + 1);
+		else if (tmp->opt == 4)
+			ft_putnbr(nbr - 1);
+		else
+			ft_putnbr(nbr);
+		ft_putchar('\n');
+	}*/
+	while (tmp)
+	{
+		ft_putendl(tmp->name);
+		if (tmp->opt == 3)
+			ft_putnbr(tmp->nbr + 1);
+		else if (tmp->opt == 4)
+			ft_putnbr(tmp->nbr - 1);
+		else
+			ft_putnbr(tmp->nbr);
+		ft_putchar('\n');
+		free(tmp->name);
+		free(tmp->var);
+		list_var = tmp;
+		tmp = tmp->next;
+		free(list_var);
+	}
+}
+
 int				main(int c, char **v)
 {
 	t_list_ari	*list_var;
@@ -75,6 +109,7 @@ int				main(int c, char **v)
 			ft_exp_ari_error("malloc error");
 		str = ft_exp_ari(str, ft_strlen(str));
 		ft_putendl(str);
+		ft_modif_var(list_var);
 	}
 	exit(0);
 }

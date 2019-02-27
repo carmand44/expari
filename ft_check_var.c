@@ -100,7 +100,8 @@ static char		*ft_replace_var(char *str, t_list_ari *list_var, int *i, int a)
 			while (l_tmp->next)
 				l_tmp = l_tmp->next;
 			if ((!(l_tmp->next = (t_list_ari*)malloc(sizeof(t_list_ari))))
-			|| (!(l_tmp->next->var = ft_strdup(nb))))
+			|| (!(l_tmp->next->var = ft_strdup(nb)))
+			|| (!(l_tmp->next->name = ft_strndup(&str[*i], j))))
 				return (0);
 			l_tmp->next->next = NULL;
 			l_tmp->next->nbr = ft_atoi(nb);
@@ -116,7 +117,8 @@ static char		*ft_replace_var(char *str, t_list_ari *list_var, int *i, int a)
 		else
 		{
 			if ((!(list_var = (t_list_ari*)malloc(sizeof(t_list_ari))))
-			|| (!(list_var->var = ft_strdup(nb))))
+			|| (!(list_var->var = ft_strdup(nb)))
+			|| (!(list_var->name = ft_strndup(&str[*i], j))))
 				return (0);
 			list_var->next = NULL;
 			list_var->nbr = ft_atoi(nb);
